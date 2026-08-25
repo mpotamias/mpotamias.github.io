@@ -3,7 +3,7 @@
     "apps": [],
     "details": [
       {
-        "appIDs": ["9CP6MWYFF5.com.krates.app"],
+        "appIDs": ["3JVRVF88NZ.com.krates.app"],
         "components": [
           { "/": "/oauth/callback", "comment": "SMART on FHIR redirect callback for the Krates iOS app" }
         ]
