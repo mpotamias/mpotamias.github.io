@@ -1,7 +1,20 @@
 <!doctype html>
 <html>
-<head><meta charset="utf-8"><title>Krates</title></head>
+<head>
+<meta charset="utf-8">
+<title>Krates</title>
+<script>
+  // Epic redirects here (a normal https:// URL) after login/consent.
+  // Hand off to the Krates app via its custom URL scheme, preserving
+  // the exact query string Epic appended (code, state, or error).
+  window.location.replace("krates://oauth/callback" + window.location.search);
+</script>
+</head>
 <body>
-<p>This page exists as a fallback for the Krates app's OAuth redirect. If you're seeing this in a browser, the app either isn't installed or Universal Links couldn't intercept this navigation.</p>
+<p>Redirecting back to Krates&hellip;</p>
+<p>If nothing happens, <a id="fallback" href="#">tap here</a>.</p>
+<script>
+  document.getElementById("fallback").href = "krates://oauth/callback" + window.location.search;
+</script>
 </body>
 </html>
