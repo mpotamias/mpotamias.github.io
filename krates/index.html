@@ -2,12 +2,104 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Moved — https://lizwiseelv.com/krates/</title>
 <link rel="canonical" href="https://lizwiseelv.com/krates/">
-<meta http-equiv="refresh" content="0; url=https://lizwiseelv.com/krates/">
-<script>window.location.replace("https://lizwiseelv.com/krates/");</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Krates — App Documentation</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    max-width: 40rem; margin: 0 auto; padding: 2.5rem 1.25rem 5rem;
+    color: #1c1c1e; background: #fff;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { color: #e6e6ea; background: #16161a; }
+    a { color: #6cb4ff; }
+    code, th { background: #222228 !important; }
+  }
+  h1 { font-size: 1.7rem; line-height: 1.25; margin: 0 0 .35rem; letter-spacing: -.01em; }
+  h2 { font-size: 1.12rem; margin: 2.3rem 0 .6rem; letter-spacing: -.005em; }
+  .sub { font-size: .95rem; opacity: .7; margin: 0 0 2rem; }
+  ul { padding-left: 1.15rem; } li { margin: .35rem 0; }
+  table { border-collapse: collapse; width: 100%; font-size: .92rem; margin: .5rem 0; }
+  th, td { text-align: left; padding: .45rem .6rem; border-bottom: 1px solid rgba(128,128,128,.25); }
+  th { background: #f4f4f6; font-weight: 600; }
+  code { background: #f4f4f6; padding: .1rem .35rem; border-radius: 4px; font-size: .88em; }
+  .scroll { overflow-x: auto; }
+</style>
 </head>
 <body>
-<p>This page has moved to <a href="https://lizwiseelv.com/krates/">https://lizwiseelv.com/krates/</a>.</p>
+
+<h1>Krates</h1>
+<p class="sub">A personal health record reader for iPhone. Documentation for health systems and reviewers.</p>
+
+<h2>What it does</h2>
+<p>Krates reads the medical records a person has already connected on their own
+device and helps them make sense of them. It charts each lab analyte over time
+against its reference range and surfaces a small number of findings worth
+raising with a clinician — a value drifting inside its normal range, a result
+never followed up, a panel whose usual rhythm has lapsed.</p>
+
+<p>It is used by one person reading their own record, or by a parent or carer
+reading the record of someone they are responsible for.</p>
+
+<h2>Access requested</h2>
+<p><strong>Read-only.</strong> Krates never writes to any FHIR resource and
+calls no write API. It requests a patient-facing standalone launch with these
+scopes and no others:</p>
+
+<div class="scroll">
+<table>
+  <tr><th>Scope</th><th>USCDI v3 data class</th><th>Used for</th></tr>
+  <tr><td><code>patient/Patient.read</code></td><td>Patient Demographics</td><td>Sex and age band, which select the applicable reference interval</td></tr>
+  <tr><td><code>patient/Observation.read</code></td><td>Laboratory, Vital Signs</td><td>The results themselves</td></tr>
+  <tr><td><code>patient/Condition.read</code></td><td>Problems</td><td>Whether a diagnosis has matching monitoring</td></tr>
+  <tr><td><code>patient/MedicationRequest.read</code></td><td>Medications</td><td>Whether a medication has its conventional safety labs</td></tr>
+  <tr><td><code>patient/Encounter.read</code></td><td>Encounter Information</td><td>Encounter class only, to keep results drawn during an admission off a trend line</td></tr>
+</table>
+</div>
+
+<p>Also <code>openid</code> and <code>fhirUser</code>. No refresh tokens and no
+<code>offline_access</code>: each session is authorised afresh by the patient.</p>
+
+<h2>Authentication</h2>
+<p>Public native client using PKCE (S256). Krates holds no client secret and no
+signing key, because an iOS application cannot keep one — anything compiled into
+the binary can be read out of it. The redirect URI is
+<code>https://mpotamias.github.io/oauth/callback</code>, a static page that
+hands the authorization code back to the app through its custom URL scheme;
+Epic's authorize endpoint does not accept a custom scheme directly.</p>
+
+<h2>Where the data goes</h2>
+<p>Records are stored <strong>only</strong> in the app's local database on the
+patient's iPhone, protected by the device passcode and Apple's file encryption.
+There is no account, no cloud sync, and no server that holds a patient record.
+Deleting the app deletes its database.</p>
+
+<p>One optional feature sends data off the device: the sentences on a finding
+card, and any question the patient types into a card's chat box, are written by
+a language model. A first-run screen shows exactly what would be sent before
+anything is sent, and it can be switched off at any time — every finding is
+still computed on the phone either way.</p>
+
+<p>What is sent: the measurements behind one finding (analyte, value, unit,
+reference range, date), sex and age band where a finding depends on them, and
+typed question text. <strong>Never sent:</strong> name, date of birth, address,
+email, phone, medical record number, or the name of any provider or clinician.
+These requests pass through a stateless relay that holds the model provider's
+API key so no key ships inside the app; it stores no request content, keeping
+only a per-device count for rate limiting. Devices authenticate to it with
+Apple's App Attest.</p>
+
+<h2>Not a medical device</h2>
+<p>Krates makes no diagnosis and gives no treatment advice. It displays a
+person's own records, charts them against the reference ranges published with
+those records, and points out results a clinician may want to look at. Every
+card says so.</p>
+
+<h2>Contact</h2>
+<p>Krates is made by Lizwise Elv LLC — <a href="mailto:contact@lizwiseelv.com">contact@lizwiseelv.com</a></p>
+<p><a href="/krates/privacy/">Privacy policy</a></p>
+
 </body>
 </html>
