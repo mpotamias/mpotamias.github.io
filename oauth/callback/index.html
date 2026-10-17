@@ -14,7 +14,7 @@
   // Both targets are fixed, so this page can't be used to redirect elsewhere.
   var state = new URLSearchParams(window.location.search).get("state") || "";
   var target = state.indexOf("w.") === 0
-    ? "https://chat.lizwiseelv.com/connect/callback"
+    ? "https://somatic.lizwiseelv.com/connect/callback"
     : "krates://oauth/callback";
   window.location.replace(target + window.location.search);
 </script>
