@@ -2,19 +2,28 @@
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="referrer" content="no-referrer">
 <title>Krates</title>
 <script>
   // Epic redirects here (a normal https:// URL) after login/consent.
-  // Hand off to the Krates app via its custom URL scheme, preserving
-  // the exact query string Epic appended (code, state, or error).
-  window.location.replace("krates://oauth/callback" + window.location.search);
+  // Hand off, preserving the exact query string Epic appended (code, state,
+  // or error):
+  //  - a sign-in started on Krates' web page (WhatsApp's "Connect my
+  //    records") has a state beginning "w." and goes back to that server;
+  //  - everything else is the iOS app, via its custom URL scheme.
+  // Both targets are fixed, so this page can't be used to redirect elsewhere.
+  var state = new URLSearchParams(window.location.search).get("state") || "";
+  var target = state.indexOf("w.") === 0
+    ? "https://chat.lizwiseelv.com/connect/callback"
+    : "krates://oauth/callback";
+  window.location.replace(target + window.location.search);
 </script>
 </head>
 <body>
 <p>Redirecting back to Krates&hellip;</p>
 <p>If nothing happens, <a id="fallback" href="#">tap here</a>.</p>
 <script>
-  document.getElementById("fallback").href = "krates://oauth/callback" + window.location.search;
+  document.getElementById("fallback").href = target + window.location.search;
 </script>
 </body>
 </html>
