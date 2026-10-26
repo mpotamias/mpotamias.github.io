@@ -18,105 +18,286 @@
   }
   h1 { font-size: 1.7rem; line-height: 1.25; margin: 0 0 .35rem; letter-spacing: -.01em; }
   h2 { font-size: 1.15rem; margin: 2.4rem 0 .6rem; letter-spacing: -.005em; }
+  h3 { font-size: 1rem; margin: 1.6rem 0 .4rem; }
   .updated { font-size: .9rem; opacity: .65; margin: 0 0 2rem; }
   ul { padding-left: 1.15rem; }
   li { margin: .35rem 0; }
   strong { font-weight: 600; }
+  .links { font-size: .9rem; margin-top: 3rem; opacity: .85; }
 </style>
 </head>
 <body>
 
 <h1>Krates — Privacy Policy</h1>
-<p class="updated">Last updated: 11 September 2026</p>
+<p class="updated">Effective 26 October 2026</p>
 
-<p>Krates is a personal health record reader. It reads the medical records you
-have already connected on your own device and helps you make sense of them.
-This policy describes exactly what it does with that information.</p>
+<p>Krates is an iPhone app for adults (18+) in the United States. It reads the medical
+records you connect, charts them, and points out results worth a second look. Its
+Eat or Skip tab checks foods against what your records say. Krates is made by
+Lizwise Elv LLC. This policy describes exactly what stays on your phone, what
+leaves it, who receives it, and how long anything is kept.</p>
 
-<h2>Your records stay on your device</h2>
+<p><strong>In short:</strong> your records, your food log and your profiles live only on
+your iPhone. Nothing about your health leaves it unless you switch on an AI feature,
+and each AI feature asks first. Our relay keeps no content, only counts.</p>
 
-<p>Krates has no account server and no cloud sync. Your lab results, conditions,
-medications, allergies, immunizations, procedures, notes and device metrics are
-stored <strong>only</strong> in the app's local database on your iPhone, protected by your
-device passcode and Apple's file encryption.</p>
+<h2>What stays on your iPhone</h2>
 
-<p>Your records are never uploaded, never backed up to us, and never readable by
-us. Everything you do in the app — what you dismiss, archive, mark as read or
-type into a chat — stays on your phone.</p>
+<p>Krates has no account and no cloud sync. All of this is stored only in the app's
+own storage on your iPhone, protected by your passcode and Apple's file
+encryption, and Lizwise Elv cannot read any of it:</p>
 
-<p>Deleting the app deletes its database and everything in it.</p>
+<ul>
+  <li><strong>Your records</strong>: lab results, vital signs, conditions, medications,
+      allergies, immunizations, procedures and notes, from Apple Health and from any
+      health system you connect, including records read from Epic MyChart.</li>
+  <li><strong>Wearable data</strong> from Polar or Withings, if you connect one, and the
+      sign-in tokens for those connections (in the iPhone keychain).</li>
+  <li><strong>Your profiles</strong>: names, dates of birth, sex at birth and anything you
+      correct, for you and any family member whose record you add.</li>
+  <li><strong>Eat or Skip</strong>: your food log, saved meals and products, food goals
+      and the weight, height and food choices you enter, and a small thumbnail of each
+      photo you analyse (kept 30 days unless you change it; the full photo is never
+      saved).</li>
+  <li><strong>What you do in the app</strong>: findings you dismiss or archive, chat
+      conversations, the thumbs you give, and your answers to the age question and
+      each AI permission.</li>
+</ul>
+
+<p>Like any app's data, this can be included in your own iPhone backup (iCloud
+Backup or a computer) if you use one. That backup is yours, under Apple's terms;
+Lizwise Elv has no access to it. Photo thumbnails are left out of backups.</p>
 
 <h2>Where your records come from</h2>
 
-<p>Krates reads records you have already connected in Apple's Health app, and — if
-you choose to connect one — directly from a health system's patient API using
-your own login. It reads; it never writes back.</p>
-
-<p>Apple Health access is granted by you, per record type, on Apple's permission
-screen. You can withdraw it at any time in <strong>Settings › Privacy &amp; Security ›
-Health › Krates</strong>.</p>
-
-<h2>What leaves your device, and why</h2>
-
-<p>One feature sends data off your device: the written explanations on insight
-cards, and the follow-up questions you ask in a chat. These are produced by a
-large language model, which runs as an external service rather than on your
-phone. Krates asks about this when you first set it up, on a screen that
-shows exactly what would be sent. <strong>It is on unless you switch it off</strong>, and
-you can switch it off at any time. The app is complete without it — every
-finding is still computed on your phone, and the app writes the cards itself.</p>
-
-<p>Those requests pass through a small relay we operate, which holds the key to
-the model service so that no such key has to be shipped inside the app. The
-relay forwards your request and returns the reply. It does not store your
-request, does not log its contents, and keeps no record of what was asked. What
-it does keep is a count of how many requests each device has made, so that one
-device cannot exhaust the service for everyone; that count is tied to an
-anonymous device identifier and to nothing about you.</p>
-
-<p>When that happens, Krates sends <strong>the minimum needed to write the sentence</strong>:</p>
-
 <ul>
-  <li>the specific measurements a finding is about — the analyte, its value, unit,
-      reference range and date</li>
-  <li>coarse demographics where a finding depends on them — sex and age band</li>
-  <li>the text of any question you type</li>
+  <li><strong>Apple Health</strong>, with your permission per record type. Withdraw it in
+      Settings › Privacy &amp; Security › Health › Krates.</li>
+  <li><strong>Your health system</strong>, through its Epic MyChart sign-in, if you connect
+      one. You sign in on the health system's own page; Krates never sees your password.
+      Your iPhone then reads your record directly from the health system, read-only.
+      Krates asks for no long-lived access, so a connection lasts about an hour and you
+      sign in again to refresh it. The sign-in returns to the app through a static page
+      we publish, which passes a one-time code to the app and keeps nothing.</li>
+  <li><strong>Polar and Withings</strong>, if you connect one. Your iPhone reads your data
+      directly from the company. Only the sign-in step goes through our relay, because it
+      needs a secret that cannot be shipped inside an app: the relay swaps the one-time
+      sign-in code (and later, a refresh code) for access tokens, hands them back to your
+      phone, and keeps none of it. No wearable data passes through the relay, and
+      Krates does not send wearable data to any AI model.</li>
 </ul>
 
-<p>Krates does <strong>not</strong> send your name, date of birth, address, email, phone
-number, medical record number, or the name of your provider or clinician. The
-model receives measurements without an identity attached to them.</p>
+<p>Krates reads; it never writes anything back to Apple Health, a health system or a
+wearable.</p>
 
-<p>The findings themselves are always computed on your device, deterministically,
-from your own results. The model only puts them into words. If no model is
-configured, Krates writes the same cards itself and every feature still works.</p>
+<h2>What leaves your iPhone, and only if you allow it</h2>
 
-<p>Data sent for this purpose is not used to train models, and Krates does not
-send your records anywhere else — no analytics service, no advertising network,
-no third party of any other kind.</p>
+<p>Three features use Google's Gemini AI model. Each is off until you allow it, on a
+screen that shows exactly what would be sent, and each can be switched off at any time.
+Requests go through our relay (below), never straight from your phone to Google. Every
+finding is still computed on your phone either way; AI puts results into words and
+reads photos.</p>
 
-<p>You can turn this off at any time under <strong>Profile › Insight wording</strong>. With it
-off, nothing leaves your phone at all.</p>
+<h3>1. Insight wording and chat</h3>
+
+<p>When you allow it, Krates sends the facts behind a finding so Gemini can phrase it in
+plain English, and the questions you type in a card's chat:</p>
+
+<ul>
+  <li>the results a finding is about (the test, value, unit, reference range and date),
+      and, where a finding is about them, the conditions, medications and family history
+      involved, by name, sometimes with the month they started;</li>
+  <li>background a clinician would use to read a result, where your profile has it: your
+      age in years, sex at birth, country of birth, work and smoking status;</li>
+  <li>the text you type in chat, with the recent turns of that conversation, and the card
+      with up to 12 of its results. Sources are labelled “Source A”, “Source B”; a clinic's
+      name is sent only when a finding compares results from two clinics.</li>
+</ul>
+
+<p>Never sent: your name, date of birth, address, race, ethnicity, marital status or
+medical record number. Switch it off on the profile card, under <strong>Insight
+wording</strong>. AI is always off for any profile under 18, and for a family member's
+profile until it has a date of birth.</p>
+
+<h3>2. Eat or Skip food analysis</h3>
+
+<p>The Eat or Skip tab is on by default, but nothing is sent until you allow food photo
+analysis. When you do:</p>
+
+<ul>
+  <li><strong>Barcodes</strong>: the barcode number goes to our relay, which looks the product
+      up in Open Food Facts. Open Food Facts gets the barcode from our relay, never your
+      phone's address.</li>
+  <li><strong>Nutrition labels and meals</strong>: the photo you choose, cropped and shrunk,
+      with location, time and camera details removed, goes to Gemini to be read. So does
+      a meal you describe by typing, with the time of day.</li>
+  <li><strong>Wording a result</strong>: the food's name, its verdict and nutrition numbers,
+      and a rough note such as "not much sodium room left today".</li>
+</ul>
+
+<p>Never sent: your name, age, sex or profile, your health records, your food log or daily
+totals, your location, or any photo you didn't choose to analyse. Everything inside a
+photo's frame is sent, so keep people and paperwork out of it. Switch it off on the
+profile card, under <strong>Food photo analysis</strong>.</p>
+
+<h3>3. Recipe ideas ("What should I cook?")</h3>
+
+<p>Asked separately. It sends what you ask for (cooking time, servings, ingredients you
+list), the names of foods you logged today, which nutrition goals are short or nearly
+used, your food choices and the ingredients you avoid, and the names of any allergies in
+your records. It never sends your other records, your age, sex, weight or totals. Switch
+it off in Eat or Skip settings.</p>
+
+<h3>Thumbs up and down, if enabled</h3>
+
+<p>Krates can share a thumbs up or down as a bare count by type (for example "insight" or
+"recipe"), with no content and nothing that identifies you or your device. This is
+<strong>currently off</strong>. If we turn it on, only daily totals per type are kept.</p>
+
+<h2>Our relay: what it keeps</h2>
+
+<p>The relay is a small service run by Lizwise Elv LLC on Cloudflare. It holds the keys to
+Google and to the wearable companies so that no key ships inside the app, and it checks,
+using Apple's App Attest, that a request comes from a genuine copy of Krates. It knows your
+device only by the anonymous key App Attest creates, never by your name, phone number or
+Apple ID. It passes each request on and <strong>stores none of its content</strong>: no
+photos, results, questions or replies. What it does keep:</p>
+
+<ul>
+  <li><strong>Usage counts, for 35 days.</strong> For each day you use an AI feature: how many
+      requests your device made and their estimated AI cost, filed under a code made from the
+      anonymous device key by a keyed hash (HMAC-SHA256) under a secret only the relay holds.
+      The code cannot be turned back into the key. These daily rows are deleted after 35 days.
+      The code and the first day it appeared are kept up to 400 days, to count new users.
+      Totals per feature are kept with no device attached. All of this is held in a database
+      on Lizwise Elv's own Cloudflare account.</li>
+  <li><strong>Rate limits.</strong> A running count of requests per device key for the current
+      minute and day (and per network address for the first set-up step), overwritten as each
+      window rolls over, so one device cannot exhaust the service.</li>
+  <li><strong>A barcode cache</strong>: a product's public Open Food Facts data, for 7 days
+      (1 day for a barcode that wasn't found), shared by everyone and not linked to who
+      asked.</li>
+  <li><strong>Operational log lines</strong> recording the type of request, the device key, and
+      its timing, size and estimated cost. They never contain content, health values or
+      barcodes.</li>
+</ul>
+
+<h2>Who else handles your data</h2>
+
+<ul>
+  <li><strong>Google (Gemini API)</strong>, only for the AI features you allow. Krates uses
+      Google's paid service, under which Google does not use the requests to improve its
+      products, and keeps them for up to 55 days only to detect abuse. Google may process them
+      outside the United States.</li>
+  <li><strong>Cloudflare</strong> runs our relay, the encrypted connection to it, and the
+      database of usage counts on Lizwise Elv's own account.</li>
+  <li><strong>Open Food Facts</strong>, a public food database, receives barcode numbers from
+      our relay. Nothing about you goes with them.</li>
+  <li><strong>Epic and your health system</strong>, only if you connect one: your iPhone signs
+      in and reads your record from them directly.</li>
+  <li><strong>Polar and Withings</strong>, only if you connect one: your iPhone reads your data
+      from them directly, and our relay completes the sign-in.</li>
+  <li><strong>Apple</strong> provides Apple Health, App Attest and the App Store, under its own
+      terms.</li>
+</ul>
+
+<h2>How long things are kept</h2>
+
+<ul>
+  <li><strong>On your iPhone</strong>: until you delete it, or delete the app. Photo thumbnails:
+      30 days by default.</li>
+  <li><strong>Content you send to an AI feature</strong>: not kept by Krates or our relay. Google
+      keeps it up to 55 days to detect abuse.</li>
+  <li><strong>Usage counts</strong>: 35 days. The hashed device code and its first-seen day: up
+      to 400 days. Totals with no device: kept.</li>
+  <li><strong>Rate-limit counters</strong>: the current minute and day only.</li>
+  <li><strong>Barcode cache</strong>: 7 days.</li>
+</ul>
+
+<h2>Deleting your data, and your choices</h2>
+
+<ul>
+  <li><strong>A connected source</strong>: in the profile menu, tap the source, then
+      <strong>Disconnect</strong>. Its results are removed from that profile.</li>
+  <li><strong>Food data</strong>: Eat or Skip settings › <strong>Delete all food data</strong>
+      removes every scan, logged entry and photo thumbnail. You can also delete one scan at a
+      time.</li>
+  <li><strong>Everything</strong>: delete the Krates app. That deletes its storage and everything
+      in it. If you keep iPhone backups, older backups may still hold a copy until they are
+      replaced.</li>
+  <li><strong>AI features</strong>: switch any of them off as described above. It takes effect at
+      once; a food request in progress is cancelled. What already reached our relay or Google
+      can't be recalled, and Google deletes it within 55 days.</li>
+  <li><strong>Apple Health</strong>: withdraw access in Settings › Privacy &amp; Security ›
+      Health › Krates.</li>
+</ul>
+
+<p>The usage counts can't be deleted on request: we can't tell which rows are yours, because
+they hold nothing that links them to you. They expire on the schedule above. You can also
+write to us (see <a href="#requests">Requests</a>).</p>
 
 <h2>What Krates never does</h2>
 
 <ul>
-  <li>No advertising, and no data shared with advertisers or data brokers</li>
-  <li>No tracking across apps or websites</li>
-  <li>No sale of your information</li>
-  <li>No use of your health data for any purpose except showing it back to you</li>
+  <li>No sale of your information, to anyone</li>
+  <li>No advertising, no analytics or tracking SDKs, and no tracking across apps or websites</li>
+  <li>Nothing shared with advertisers or data brokers</li>
+  <li>No use of your health data except to show it back to you</li>
+  <li>No diagnosis or treatment advice: Krates is not a medical device</li>
 </ul>
 
-<h2>Children</h2>
+<h2>Adults only</h2>
 
-<p>A profile in Krates can hold a child's record, added by a parent or guardian
-from records they already hold. The same rules apply to it as to your own.</p>
+<p>Krates is for people 18 and over. It asks when you were born before anything else, and
+stops anyone under 18 there. Only the answer and the year are kept, on your iPhone. An adult
+may add the record of a family member they are entitled to hold, such as a child's; AI
+features are always off for a profile under 18.</p>
+
+<h2>How it is protected</h2>
+
+<p>Data on your iPhone is encrypted by iOS and locked behind your passcode. Every connection
+Krates makes is encrypted in transit. The relay serves only genuine copies of Krates, verified
+with Apple's App Attest.</p>
+
+<h2>Washington and Nevada residents</h2>
+
+<p>Our <a href="https://lizwiseelv.com/krates/consumer-health-data/">Consumer Health Data
+Privacy Policy</a> covers Washington's My Health My Data Act and Nevada's consumer health
+data law: the categories, purposes, sources, sharing and your rights.</p>
+
+<h2>California residents</h2>
+
+<p><strong>Medical information (CMIA).</strong> Krates keeps your medical information on your
+iPhone, and we do not hold it. It is disclosed only as you direct: each AI feature sends the
+information it lists to Google, through our relay, only after you allow it on that feature's
+permission screen, and you can withdraw that permission at any time in the app. We never sell
+it or use it for marketing.</p>
+
+<p><strong>Your privacy rights (CCPA).</strong> In the last 12 months, the personal information
+we or our service providers handled was: a pseudonymous device key and the hashed code made
+from it (identifiers); the counts and estimated cost of AI requests (usage information); and,
+only for the AI features you allow, the health and food information they list (sensitive
+personal information), passed to Google and not kept by us. It all comes from your device. We
+use it only to provide the features you ask for and to keep the service running and within
+budget. We disclose it only to the service providers named above. We do not sell or share
+personal information, and we use sensitive personal information only to provide the service.
+You have the right to know what we hold, to have it deleted or corrected, to limit the use of
+sensitive personal information, and not to be treated differently for using these rights. You
+may use an authorised agent.</p>
+
+<h2 id="requests">Requests</h2>
+
+<p>To ask what we hold, to delete or correct it, to withdraw consent or to appeal a decision,
+email <a href="mailto:contact@lizwiseelv.com">contact@lizwiseelv.com</a> with
+"Privacy request" in the subject, your state, and what you'd like done. Because Krates keeps
+your data on your iPhone and we hold nothing that names you, we will usually answer by
+explaining exactly what we hold and showing you how to delete the rest in the app. We answer
+within 45 days, and there is no charge. More help is on the
+<a href="https://lizwiseelv.com/krates/support/">support page</a>.</p>
 
 <h2>Who is responsible</h2>
 
-<p>Krates is published by Lizwise Elv LLC. Because your records stay on your device, the
-company holds none of them — but it is responsible for the app that reads them,
-and it is who to write to.</p>
+<p>Lizwise Elv LLC, a California limited liability company, which makes Krates.</p>
 
 <h2>Contact</h2>
 
@@ -124,9 +305,20 @@ and it is who to write to.</p>
 
 <h2>Changes</h2>
 
-<p>If this policy changes in a way that affects what leaves your device, the
-change will be described here with a new date above, and called out in the app
-before it takes effect.</p>
+<p>If this policy changes in a way that affects what leaves your iPhone or who handles it, the
+change will be described here with a new date above, and called out in the app before it takes
+effect.</p>
+
+<p><strong>26 October 2026:</strong> rewritten in full. It now describes Eat or Skip, recipe
+ideas, Polar and Withings, and Epic MyChart; names Google's Gemini paid service, Cloudflare and
+Open Food Facts; says every AI feature is off until you allow it; adds the relay's daily usage
+counts (35 days, first-seen day up to 400 days) and thumbs counts (off for now); sets 18+; and
+adds the California, Washington and Nevada sections.</p>
+
+<p class="links"><a href="/krates/">Krates</a> ·
+<a href="/krates/terms/">Terms of use</a> ·
+<a href="https://lizwiseelv.com/krates/support/">Support</a> ·
+<a href="https://lizwiseelv.com/krates/consumer-health-data/">Consumer health data</a></p>
 
 </body>
 </html>

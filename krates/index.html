@@ -40,8 +40,9 @@ against its reference range and surfaces a small number of findings worth
 raising with a clinician — a value drifting inside its normal range, a result
 never followed up, a panel whose usual rhythm has lapsed.</p>
 
-<p>It is used by one person reading their own record, or by a parent or carer
-reading the record of someone they are responsible for.</p>
+<p>It is used by an adult (18 or over) reading their own record, or by a parent or
+carer reading the record of someone they are responsible for. It is offered in the
+United States only.</p>
 
 <h2>Access requested</h2>
 <p><strong>Read-only.</strong> Krates never writes to any FHIR resource and
@@ -76,20 +77,24 @@ patient's iPhone, protected by the device passcode and Apple's file encryption.
 There is no account, no cloud sync, and no server that holds a patient record.
 Deleting the app deletes its database.</p>
 
-<p>One optional feature sends data off the device: the sentences on a finding
-card, and any question the patient types into a card's chat box, are written by
-a language model. A first-run screen shows exactly what would be sent before
-anything is sent, and it can be switched off at any time — every finding is
-still computed on the phone either way.</p>
+<p>Nothing from a record leaves the device unless the patient opts in. Optional
+AI features, each off until allowed on a screen that shows exactly what would be sent,
+use Google's Gemini (paid service): the sentences on a finding card and answers to
+questions typed into a card's chat. Every finding is still computed on the phone
+either way.</p>
 
-<p>What is sent: the measurements behind one finding (analyte, value, unit,
-reference range, date), sex and age band where a finding depends on them, and
-typed question text. <strong>Never sent:</strong> name, date of birth, address,
-email, phone, medical record number, or the name of any provider or clinician.
-These requests pass through a stateless relay that holds the model provider's
-API key so no key ships inside the app; it stores no request content, keeping
-only a per-device count for rate limiting. Devices authenticate to it with
-Apple's App Attest.</p>
+<p>What is sent for wording: the results behind one finding (analyte, value, unit,
+reference range, date, and in chat the source it came from) and any conditions or
+medications it concerns, age in years, sex at
+birth and, if the patient entered them, country of birth, work and smoking status, and
+typed question text. <strong>Never sent:</strong> name, date of birth, address, email,
+phone, or medical record number. These requests pass through a relay that holds the
+model provider's API key so no key ships inside the app; it stores no request content.
+It keeps daily request counts per pseudonymous (hashed) device code for 35 days, for
+usage statistics and rate limiting. Devices authenticate to it with Apple's App
+Attest. AI features are off for any profile under 18.</p>
+
+<p>Full detail: the <a href="https://lizwiseelv.com/krates/privacy/">privacy policy</a>.</p>
 
 <h2>Not a medical device</h2>
 <p>Krates makes no diagnosis and gives no treatment advice. It displays a
@@ -99,7 +104,10 @@ card says so.</p>
 
 <h2>Contact</h2>
 <p>Krates is made by Lizwise Elv LLC — <a href="mailto:contact@lizwiseelv.com">contact@lizwiseelv.com</a></p>
-<p><a href="/krates/privacy/">Privacy policy</a></p>
+<p><a href="/krates/privacy/">Privacy policy</a> ·
+<a href="/krates/terms/">Terms of use</a> ·
+<a href="https://lizwiseelv.com/krates/support/">Support</a> ·
+<a href="https://lizwiseelv.com/krates/consumer-health-data/">Consumer health data privacy policy</a></p>
 
 </body>
 </html>
