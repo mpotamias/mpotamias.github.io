@@ -29,7 +29,7 @@
 <body>
 
 <h1>Krates — Privacy Policy</h1>
-<p class="updated">Effective 26 October 2026</p>
+<p class="updated">Effective 4 November 2026</p>
 
 <p>Krates is an iPhone app for adults (18+) in the United States. It reads the medical
 records you connect, charts them, and points out results worth a second look. Its
@@ -83,8 +83,9 @@ Lizwise Elv has no access to it. Photo thumbnails are left out of backups.</p>
       directly from the company. Only the sign-in step goes through our relay, because it
       needs a secret that cannot be shipped inside an app: the relay swaps the one-time
       sign-in code (and later, a refresh code) for access tokens, hands them back to your
-      phone, and keeps none of it. No wearable data passes through the relay, and
-      Krates does not send wearable data to any AI model.</li>
+      phone, and keeps none of it. No wearable data passes through the relay at sign-in.
+      Wearable data reaches an AI model only in a general health chat you start, and
+      only if you allow it (below).</li>
 </ul>
 
 <p>Krates reads; it never writes anything back to Apple Health, a health system or a
@@ -101,7 +102,8 @@ reads photos.</p>
 <h3>1. Insight wording and chat</h3>
 
 <p>When you allow it, Krates sends the facts behind a finding so Gemini can phrase it in
-plain English, and the questions you type in a card's chat:</p>
+plain English, the questions you type in a card's chat, and a general health chat you
+start:</p>
 
 <ul>
   <li>the results a finding is about (the test, value, unit, reference range and date),
@@ -112,10 +114,16 @@ plain English, and the questions you type in a card's chat:</p>
   <li>the text you type in chat, with the recent turns of that conversation, and the card
       with up to 12 of its results. Sources are labelled “Source A”, “Source B”; a clinic's
       name is sent only when a finding compares results from two clinics.</li>
+  <li>in a <strong>general health chat</strong> you start: a summary of your data without
+      your name, birth date, address or where you're treated (your age range, sex at birth,
+      conditions, medications, allergies, recent results, Apple Health and wearable averages
+      such as Polar or Withings, and your food log against your goals), plus any detail an
+      answer asks for, such as one test's history or a month of steps. Each reply lists what
+      it used. Data from Oura is never sent.</li>
 </ul>
 
-<p>Never sent: your name, date of birth, address, race, ethnicity, marital status or
-medical record number. Switch it off on the profile card, under <strong>Insight
+<p>Never sent: your name, date of birth, address, race, ethnicity, marital status, medical
+record number or your doctors' names. Switch it off on the profile card, under <strong>Insight
 wording</strong>. AI is always off for any profile under 18, and for a family member's
 profile until it has a date of birth.</p>
 
